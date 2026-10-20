@@ -1,0 +1,98 @@
+@import 'tailwindcss';
+
+/* A classe .dark no <html> ativa o tema escuro */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Fontes e cores fixas da marca */
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-titulo: 'Barlow Semi Condensed', 'Inter', ui-sans-serif, sans-serif;
+  --color-sinal: #f5a524; /* amarelo de sinalização */
+  --color-sinal-forte: #d98b0b;
+  --color-asfalto: #16181d;
+}
+
+/* Cores que mudam com o tema (tema claro = padrão) */
+:root {
+  --fundo: #f2efe8;
+  --superficie: #ffffff;
+  --superficie-2: #e9e4d9;
+  --texto: #16181d;
+  --suave: #5a5f6b;
+  --borda: #d8d1c2;
+  --ok: #15803d;
+  --atencao: #b45309;
+  --perigo: #c62828;
+  color-scheme: light;
+}
+
+.dark {
+  --fundo: #16181d;
+  --superficie: #1e2128;
+  --superficie-2: #282c35;
+  --texto: #f1efe9;
+  --suave: #a0a6b2;
+  --borda: #323742;
+  --ok: #4ade80;
+  --atencao: #f5a524;
+  --perigo: #f87171;
+  color-scheme: dark;
+}
+
+/* Gera classes como bg-fundo, text-suave, border-borda... */
+@theme inline {
+  --color-fundo: var(--fundo);
+  --color-superficie: var(--superficie);
+  --color-superficie-2: var(--superficie-2);
+  --color-texto: var(--texto);
+  --color-suave: var(--suave);
+  --color-borda: var(--borda);
+  --color-ok: var(--ok);
+  --color-atencao: var(--atencao);
+  --color-perigo: var(--perigo);
+}
+
+@layer base {
+  body {
+    @apply bg-fundo text-texto font-sans antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-titulo tracking-tight;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-sinal);
+    outline-offset: 2px;
+  }
+}
+
+/* Faixa tracejada amarela, como a do meio da pista */
+@utility faixa-pista {
+  background-image: repeating-linear-gradient(90deg, var(--color-sinal) 0 28px, transparent 28px 46px);
+}
+
+/* Listras zebradas de advertência */
+@utility zebrado {
+  background-image: repeating-linear-gradient(-45deg, var(--color-sinal) 0 10px, var(--color-asfalto) 10px 20px);
+}
+
+/* Textura sutil de asfalto para áreas de destaque */
+@utility asfalto {
+  background-color: var(--color-asfalto);
+  background-image:
+    radial-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px),
+    radial-gradient(rgb(255 255 255 / 0.025) 1px, transparent 1px);
+  background-size: 7px 7px, 13px 13px;
+  background-position: 0 0, 3px 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
