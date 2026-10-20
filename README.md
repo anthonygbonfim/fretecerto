@@ -8,8 +8,7 @@ O FreteCerto ajuda o caminhoneiro a descobrir se o frete está pagando a estrada
 - **Status da meta**: *viável*, *precisa de ajuste* (falta até 20% por mês) ou *fora do prazo*.
 - **Diagnóstico com IA** (Google Gemini): viabilidade, diagnóstico do mês, 4 dicas para gastar menos, 4 ideias para faturar mais (ex.: frete de retorno), 4 dicas de reserva e uma mensagem motivacional citando a meta.
 
-> 🔗 **Demo:** https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/
-> *(troque pelo link do seu GitHub Pages depois do primeiro deploy)*
+> 🔗 **Demo:** https://anthonygbonfim.github.io/fretecerto/
 
 ---
 
